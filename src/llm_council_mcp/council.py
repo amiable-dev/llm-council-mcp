@@ -346,16 +346,17 @@ def parse_ranking_from_text(ranking_text: str) -> Dict[str, Any]:
     result = {"ranking": [], "scores": {}}
 
     # Check for safety refusals or inability to evaluate
+    # Note: patterns are lowercase since we search in lowercased text
     refusal_patterns = [
-        r"I cannot evaluate",
-        r"I'm not able to (rank|evaluate|assess)",
-        r"I don't feel comfortable",
-        r"I must decline",
-        r"I can't provide a ranking",
-        r"I'm unable to rank",
-        r"I cannot compare",
-        r"I won't be able to",
-        r"I apologize,? but I cannot",
+        r"i cannot evaluate",
+        r"i'm not able to (rank|evaluate|assess)",
+        r"i don't feel comfortable",
+        r"i must decline",
+        r"i can't provide a ranking",
+        r"i'm unable to rank",
+        r"i cannot compare",
+        r"i won't be able to",
+        r"i apologize,? but i cannot",
     ]
 
     ranking_text_lower = ranking_text.lower()
